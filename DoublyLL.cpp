@@ -6,6 +6,9 @@ struct node *insert_at_begin(struct node *newnode,struct node *head,struct node 
 struct node *insert_at_end(struct node *newnode,struct node *head,struct node *tail,int n);
 void insert_before_position(struct node *newnode,struct node *head,struct node *tail,struct node *temp,int n);
 void insert_after_position(struct node *newnode,struct node *head,struct node *tail,struct node *temp,int n);
+struct node *delete_at_begin(struct node *newnode,struct node *head,struct node *tail,int n);
+struct node *delete_at_end(struct node *newnode,struct node *head,struct node *tail,int n);
+void delete_at_position(struct node *newnode,struct node *head,struct node *tail,int n);
 
 struct node
 {
@@ -104,6 +107,43 @@ void insert_after_position(struct node *newnode,struct node *head,struct node *t
 
 }
 
+struct node *delete_at_begin(struct node *newnode,struct node *head,struct node *tail,int n)
+{
+ head=head->next;
+ head->prev=NULL;
+ n--;
+ return head;
+
+}
+
+struct node *delete_at_end(struct node *newnode,struct node *head,struct node *tail,int n)
+{
+    tail=tail->prev;
+    tail->next=NULL;
+
+    n--;
+    return tail;
+}
+
+void delete_at_position(struct node *newnode,struct node *head,struct node *tail,int n)
+{
+    int position;
+   cout<<"\nENTER POSITION : ";
+   cin>>position;
+
+   struct node *temp;
+   temp=head;
+   for(int i=1;i<position;i++)
+   {
+       temp=temp->next;
+   }
+   temp->prev->next=temp->next;
+   temp->next->prev=temp->prev;
+
+   n--;
+   print_DLL(head,tail,n);
+
+}
 int main()
 {
     struct node *newnode,*head,*temp,*tail;
@@ -134,8 +174,8 @@ int main()
 
     }
     print_DLL(head,tail,n);
-
-    cout<<"\nINSERT AT BEGIN ";
+/*
+   cout<<"\nINSERT AT BEGIN ";
     n++;
     head=insert_at_begin(newnode,head,tail,n);
     print_DLL(head,tail,n);
@@ -149,8 +189,17 @@ int main()
     n++;
     cout<<"\nINSERT BEFORE POSITION ";
     insert_after_position(newnode,head,tail,temp,n);
-
-
-
+    cout<<"\nDELETE AT BEGIN\n";
+    head=delete_at_begin(newnode,head,tail,n);
+    print_DLL(head,tail,n);
+    n--;
+    cout<<"\nDELETE AT END\n";
+    tail=delete_at_end(newnode,head,tail,n);
+    print_DLL(head,tail,n);
+    n--;
+*/
+    cout<<"\nDELETE AT POSITION\n";
+    delete_at_position(newnode,head,tail,n);
+    n--;
     return 0;
 }
