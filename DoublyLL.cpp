@@ -174,7 +174,6 @@ int main()
 
     }
     print_DLL(head,tail,n);
-/*
    cout<<"\nINSERT AT BEGIN ";
     n++;
     head=insert_at_begin(newnode,head,tail,n);
@@ -197,7 +196,7 @@ int main()
     tail=delete_at_end(newnode,head,tail,n);
     print_DLL(head,tail,n);
     n--;
-*/
+
     cout<<"\nDELETE AT POSITION\n";
     delete_at_position(newnode,head,tail,n);
     n--;
