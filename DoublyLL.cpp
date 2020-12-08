@@ -193,7 +193,7 @@ int main()
         }
 
     }
-    /*print_DLL(head,tail,n);
+    print_DLL(head,tail,n);
    cout<<"\nINSERT AT BEGIN ";
     n++;
     head=insert_at_begin(newnode,head,tail,n);
@@ -219,7 +219,7 @@ int main()
 
     cout<<"\nDELETE AT POSITION\n";
     delete_at_position(newnode,head,tail,n);
-    n--;*/
+    n--;
 
     reverse_DLL(newnode,head,tail,n);
     return 0;
