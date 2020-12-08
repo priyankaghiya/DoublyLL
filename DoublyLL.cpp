@@ -9,6 +9,7 @@ void insert_after_position(struct node *newnode,struct node *head,struct node *t
 struct node *delete_at_begin(struct node *newnode,struct node *head,struct node *tail,int n);
 struct node *delete_at_end(struct node *newnode,struct node *head,struct node *tail,int n);
 void delete_at_position(struct node *newnode,struct node *head,struct node *tail,int n);
+void reverse_DLL(struct node *newnode,struct node *head,struct node *tail,int n);
 
 struct node
 {
@@ -144,6 +145,25 @@ void delete_at_position(struct node *newnode,struct node *head,struct node *tail
    print_DLL(head,tail,n);
 
 }
+
+void reverse_DLL(struct node *newnode,struct node *head,struct node *tail,int n)
+{
+    struct node *temp,*curr;
+    curr=head;
+
+   while(curr!=NULL)
+   {
+       temp=curr->next;
+       curr->next=curr->prev;
+       curr->prev=temp;
+       curr=temp;
+    }
+    curr=head;
+    head=tail;
+    tail=curr;
+    print_DLL(head,tail,n);
+
+}
 int main()
 {
     struct node *newnode,*head,*temp,*tail;
@@ -173,7 +193,7 @@ int main()
         }
 
     }
-    print_DLL(head,tail,n);
+    /*print_DLL(head,tail,n);
    cout<<"\nINSERT AT BEGIN ";
     n++;
     head=insert_at_begin(newnode,head,tail,n);
@@ -199,6 +219,8 @@ int main()
 
     cout<<"\nDELETE AT POSITION\n";
     delete_at_position(newnode,head,tail,n);
-    n--;
+    n--;*/
+
+    reverse_DLL(newnode,head,tail,n);
     return 0;
 }
